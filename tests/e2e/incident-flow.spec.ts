@@ -38,11 +38,12 @@ test("route navigation supports direct loads, refresh, and browser back", async 
   await page.getByRole("link", { name: "See how evidence works" }).click();
   await expect(page).toHaveURL(/\/evidence$/);
   await expect(page.getByRole("heading", { name: "Correlation before conclusion." })).toBeVisible();
-  await page.reload();
-  await expect(page.getByRole("heading", { name: "Correlation before conclusion." })).toBeVisible();
   await page.goBack();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole("link", { name: "Start incident simulation" })).toBeVisible();
+  await page.goto("/evidence");
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Correlation before conclusion." })).toBeVisible();
 });
 
 test("mobile workspace uses deliberate views without horizontal clipping", async ({ page }) => {
