@@ -1,5 +1,7 @@
 # Traceforge Incident Lab
 
+[Live production lab](https://traceforge-incident-lab.vercel.app) · [Architecture](docs/ARCHITECTURE.md) · [Runbooks](docs/RUNBOOKS.md) · [Synthetic trial method](docs/BENCHMARK.md)
+
 Traceforge is a deterministic incident investigation and controlled recovery workbench. It lets an operator inject one of three known failures into a small simulated service system, assemble correlated telemetry, test evidence-linked hypotheses, choose an explicit runbook action, and verify whether the service-level objective recovered.
 
 > **Scope:** Every service, fault, log, metric, trace, deploy event, and trial result in this repository is simulated. Traceforge is a portfolio and training product, not evidence of production incident response or a connection to live infrastructure.
@@ -35,6 +37,8 @@ No AI API or secret is required. The hypothesis ranking is a transparent determi
 | Replay and audit | Reducer provides explicit reset and append-only in-session audit events | Scenario-switch E2E and reducer reset/audit tests |
 | Baseline comparison | Six raw, disclosed synthetic observations and computed summary | `docs/BENCHMARK.md` and the trial report on the public page |
 | Release quality | Zero-secret configuration, pinned runtime, CI quality/browser jobs, exact public alias verification | `.github/workflows/ci.yml`, `scripts/secret-scan.mjs`, repository Actions, and deployed Playwright run |
+
+Release proof: the exact production alias `https://traceforge-incident-lab.vercel.app` returned HTTP 200, exposed the three-scenario simulated API contract, and passed the four-flow Chromium suite after deployment on 2026-09-04.
 
 ## Run locally
 
